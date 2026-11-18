@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifadz Rivaldi Rahman — Web Portfolio</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Corak Grid Titik-titik Teknis yang Estetik */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(99, 102, 241, 0.25) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+    }
+    .dark .bg-grid-pattern {
+      background-image: radial-gradient(rgba(99, 102, 241, 0.18) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.6);
+      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+    }
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 bg-grid-pattern text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-indigo-500 selection:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300">
+
+  <!-- Efek Bola Cahaya Latar Belakang yang Mewah -->
+  <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-emerald-500/15 dark:bg-emerald-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-violet-500/15 dark:bg-violet-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <!-- Navbar Modern Melayang dengan Efek Kaca -->
+  <header class="sticky top-4 z-50 max-w-4xl mx-auto px-4">
+    <div class="glass-card border border-slate-300/80 dark:border-slate-700/60 rounded-2xl px-6 h-16 flex items-center justify-between shadow-xl shadow-indigo-500/5">
+      <a href="#" class="font-bold text-base tracking-tight flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-emerald-500 text-white flex items-center justify-center font-extrabold text-sm shadow-lg shadow-indigo-500/40">
+          RR
+        </div>
+        <span class="text-slate-900 dark:text-white font-extrabold text-lg">Rifadz Rivaldi Rahman<span class="text-indigo-600 dark:text-indigo-400"></span></span>
+      </a>
+
+      <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-slate-700 dark:text-slate-300">
+        <a href="#profil" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Profil</a>
+        <a href="#proyek" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Proyek</a>
+        <a href="#keahlian" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Keahlian</a>
+        <a href="#pendidikan" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Pendidikan</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition shadow-md">
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 relative z-10">
+
+    <!-- 1. Hero / Profil Section -->
+    <section id="profil" class="glass-card border border-slate-300/80 dark:border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-br from-indigo-500/20 to-emerald-500/20 rounded-full blur-3xl"></div>
+
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+        <!-- Foto Profil dengan Bingkai Gradient Menyala -->
+        <div class="relative group shrink-0">
+          <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-emerald-500 rounded-2xl blur-md opacity-80 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+          <div class="relative w-40 h-48 rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-900 border-2 border-white dark:border-slate-800 shadow-2xl">
+            <img 
+              src="d:\download\Potret Wisuda Seragam Sekolah Berlatar Merah.png" 
+              alt="Rifadz Rivaldi Rahman" 
+              class="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-500"
+            />
+          </div>
+        </div>
+
+        <!-- Bio & Deskripsi -->
+        <div class="flex-1 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 mb-4 shadow-inner">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            Portopolio
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+            Rifadz Rivaldi Rahman
+          </h1>
+          <p class="mt-2 text-base font-bold text-indigo-600 dark:text-indigo-400">
+            Siswa PPLG • <span id="typing-text" class="typing-cursor">Backend & Web Developer</span>
+          </p>
+
+          <p class="mt-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            Siswa SMK jurusan Pengembangan Perangkat Lunak dan Gim (PPLG) dengan minat dan fokus pada pengembangan aplikasi web. Terbiasa membangun sistem berbasis <strong class="text-slate-900 dark:text-white font-semibold bg-indigo-500/10 px-1.5 py-0.5 rounded">PHP, Laravel, dan MySQL</strong>, merancang <strong class="text-slate-900 dark:text-white font-semibold bg-indigo-500/10 px-1.5 py-0.5 rounded">REST API</strong>, serta mengelola dokumentasi Git. Siap berkontribusi dan belajar dalam program Praktek Kerja Lapangan (PKL) maupun posisi Junior Developer.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid Kontak Berwarna & Interaktif -->
+      <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:border-indigo-500/60 transition group">
+          <div class="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition">
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
+          </div>
+          <span class="truncate">Kp. Jelekong, Baleendah</span>
+        </div>
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:border-indigo-500/60 transition group">
+          <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+          </div>
+          <a href="tel:+6285950368097" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">+62 859-5036-8097</a>
+        </div>
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:border-indigo-500/60 transition group">
+          <div class="p-2 rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400 group-hover:bg-violet-500 group-hover:text-white transition">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+          </div>
+          <a href="mailto:rivaldirifadz@gmail.com" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition truncate">rivaldirifadz@gmail.com</a>
+        </div>
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:border-indigo-500/60 transition group">
+          <div class="p-2 rounded-xl bg-slate-800 text-white group-hover:bg-indigo-600 transition">
+            <i data-lucide="github" class="w-4 h-4"></i>
+          </div>
+          <a href="https://github.com/JamesKim17" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition truncate">github.com/JamesKim17</a>
+        </div>
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-md hover:border-indigo-500/60 transition group sm:col-span-2">
+          <div class="p-2 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </div>
+          <a href="https://www.linkedin.com/in/rifadz-rivaldi-rahman-16b281450" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition truncate">linkedin.com/in/rifadz-rivaldi-rahman-16b281450</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Pengalaman Proyek -->
+    <section id="proyek" class="space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 rounded-2xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 shadow-md">
+          <i data-lucide="folder-git-2" class="w-6 h-6"></i>
+        </div>
+        <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Pengalaman Proyek</h2>
+      </div>
+
+      <div class="glass-card border border-slate-300/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition duration-500"></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 mb-2 shadow-sm">Proyek UJIKOM</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">Sistem Informasi Manajemen Alat</h3>
+          </div>
+          <a href="https://github.com/JamesKim17/UJIKOM-Peminjaman-Alat" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-500/30 transition self-start transform hover:-translate-y-0.5">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            Lihat Repository
+          </a>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 text-xs font-bold rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">PHP</span>
+          <span class="px-3 py-1 text-xs font-bold rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">Laravel</span>
+          <span class="px-3 py-1 text-xs font-bold rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">MySQL</span>
+          <span class="px-3 py-1 text-xs font-bold rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">Tailwind CSS</span>
+          <span class="px-3 py-1 text-xs font-bold rounded-xl bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">Docker</span>
+        </div>
+
+        <ul class="mt-6 space-y-3 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+          <li class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 mt-2 shrink-0 shadow-sm"></span>
+            <span>Mengembangkan aplikasi web manajemen peminjaman dan pengembalian alat dengan fitur multi role (<strong class="text-slate-900 dark:text-white font-bold">Admin, Petugas, Peminjam</strong>).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 mt-2 shrink-0 shadow-sm"></span>
+            <span>Merancang struktur database relasional dan <strong class="text-slate-900 dark:text-white font-bold">REST API</strong> untuk mencatat riwayat transaksi secara real-time.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-2 h-2 rounded-full bg-indigo-600 dark:bg-indigo-400 mt-2 shrink-0 shadow-sm"></span>
+            <span>Melakukan pengujian fungsional aplikasi (<em>positive & negative test case</em>) untuk memastikan alur sistem berjalan lancar.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Keahlian (Hard Skills & Soft Skills Terpisah & Menarik) -->
+    <section id="keahlian" class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shadow-md">
+          <i data-lucide="cpu" class="w-6 h-6"></i>
+        </div>
+        <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Keahlian</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Hard Skills -->
+        <div class="glass-card border border-slate-300/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+          <div class="flex items-center gap-3 text-indigo-600 dark:text-indigo-400 font-extrabold text-lg border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div class="p-2 rounded-xl bg-indigo-500/10">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <h3>Hard Skills (Keahlian Teknis)</h3>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-white/60 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2.5">Bahasa Pemrograman</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">PHP</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">JavaScript</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">SQL</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">HTML</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">CSS</span>
+              </div>
+            </div>
+
+            <div class="bg-white/60 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2.5">Framework & Tools</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">Laravel</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">Tailwind CSS</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">Git & GitHub</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">Docker</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">Postman</span>
+                <span class="px-3 py-1.5 text-xs font-bold rounded-xl bg-indigo-500/10 dark:bg-slate-800 border border-indigo-500/20 text-slate-800 dark:text-slate-200 shadow-sm">VS Code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="glass-card border border-slate-300/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+          <div class="flex items-center gap-3 text-emerald-600 dark:text-emerald-400 font-extrabold text-lg border-b border-slate-200 dark:border-slate-800 pb-4">
+            <div class="p-2 rounded-xl bg-emerald-500/10">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <h3>Soft Skills (Keahlian Non-Teknis)</h3>
+          </div>
+
+          <div class="space-y-3.5">
+            <div class="bg-white/60 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm flex items-center gap-4">
+              <div class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h5 class="text-sm font-extrabold text-slate-900 dark:text-white">Problem Solving</h5>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Pemecahan Masalah</p>
+              </div>
+            </div>
+
+            <div class="bg-white/60 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm flex items-center gap-4">
+              <div class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h5 class="text-sm font-extrabold text-slate-900 dark:text-white">Kerja Tim</h5>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Teamwork & Kolaborasi</p>
+              </div>
+            </div>
+
+            <div class="bg-white/60 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm flex items-center gap-4">
+              <div class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h5 class="text-sm font-extrabold text-slate-900 dark:text-white">Manajemen Waktu</h5>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Time Management</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Pendidikan -->
+    <section id="pendidikan" class="space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 rounded-2xl bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/30 shadow-md">
+          <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+        </div>
+        <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Pendidikan</h2>
+      </div>
+
+      <div class="glass-card border border-slate-300/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">SMK NEGERI 7 BALEENDAH</h3>
+            <p class="text-sm font-bold text-indigo-600 dark:text-indigo-400">Rekayasa Perangkat Lunak (PPLG)</p>
+          </div>
+          <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-mono font-bold bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 shadow-sm w-fit">
+            2024 – 2027
+          </span>
+        </div>
+
+        <ul class="mt-5 space-y-2.5 text-sm sm:text-base text-slate-700 dark:text-slate-300 list-disc list-inside">
+          <li>Pelajari dasar alur pemrograman, bahasa pemrograman dan alat yang digunakan.</li>
+          <li>Mengembangkan keterampilan alur pemrograman, bahasa pemrograman, serta penggunaan alat yang digunakan.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-300 dark:border-slate-800 py-10 text-center text-xs text-slate-500 relative z-10">
+    <p>© Rifadz Rivaldi Rahman</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Dark/Light Mode Switcher
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      htmlEl.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else {
+        htmlEl.classList.add('dark');
+        localStorage.theme = 'dark';
+      }
+    });
+
+    // Efek Typing Sederhana
+    const words = ["Backend & Web Developer", "Laravel Enthusiast", "PPLG Student"];
+    let i = 0;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      let loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('typing-text').innerHTML += word.shift();
+        } else {
+          setTimeout(deletingEffect, 2000);
+          return false;
+        }
+        setTimeout(loopTyping, 100);
+      };
+      loopTyping();
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      let loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('typing-text').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          }
+          setTimeout(typingEffect, 500);
+          return false;
+        }
+        setTimeout(loopDeleting, 50);
+      };
+      loopDeleting();
+    }
+
+    typingEffect();
+  </script>
+</body>
+</html>
